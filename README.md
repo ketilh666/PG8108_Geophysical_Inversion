@@ -14,7 +14,7 @@ The course content and lectures are approximately as follows:
     06. Tomography
     07. Linear inversion (GravMag and AVO)
     08. Sparse inversion
-    09. Nonlinear inversion
+    09. Nonlinear inversion (Mag, CSEM)
     10. Full-waveform inversion (and RTM)
     11. Magnetotellurics
     12. Contrast-source inversion
