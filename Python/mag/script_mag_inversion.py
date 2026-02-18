@@ -23,15 +23,17 @@ from magfunc import load_test_model
 
 gscl = 250. # sale of the problem (grid spacing)
 
-# niter =  0                # Linear inversion if niter==0
-# z_shift_ini = 0.0         # Shift of tru base in initial model
-niter =  6               # Number of iterations in non-lin GN inversion
-z_shift_ini = -0.2*gscl  # Shift of base source layer for initial inversion model 
+niter =  0                # Linear inversion if niter==0
+z_shift_ini = 0.0         # Shift of tru base in initial model
+# niter =  6               # Number of iterations in non-lin GN inversion
+# z_shift_ini = -0.2*gscl  # Shift of base source layer for initial inversion model 
+
 lam = 1e-6                # Marquardt-Levenberg regularization parameter
+# lam = 0.0
 
 to_nT, from_nT = 1.0e9, 1.0e-9
 
-k_frst, k_last = 2,2
+k_frst, k_last = 0,0
 for ktest in range(k_frst,k_last+1):
     
     #-----------------------------------------
@@ -194,7 +196,7 @@ for ktest in range(k_frst,k_last+1):
     im = ax.imshow(mlm, origin='upper', cmap=cm.magma)
     cm.ScalarMappable.set_clim(im)
     cbar = ax.figure.colorbar(im, ax=ax, shrink=0.8); 
-    ax.set_title('Test {} (iter {}): L^TL + lam*diag(L^TL)'.format(ktest, it))
+    ax.set_title('Test {} (iter {}): $A^TA + \lambda diag(A^TA)$'.format(ktest, it))
     fig.savefig(prefix + '_test_{}'.format(ktest) + '_marq_leven_matrix.png')
         
     plt.show(block=False)
