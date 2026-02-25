@@ -33,7 +33,7 @@ lam = 1e-6                # Marquardt-Levenberg regularization parameter
 
 to_nT, from_nT = 1.0e9, 1.0e-9
 
-k_frst, k_last = 0,0
+k_frst, k_last = 5,5
 for ktest in range(k_frst,k_last+1):
     
     #-----------------------------------------
