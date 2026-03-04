@@ -23,17 +23,17 @@ from magfunc import load_test_model
 
 gscl = 250. # sale of the problem (grid spacing)
 
-niter =  0                # Linear inversion if niter==0
-z_shift_ini = 0.0         # Shift of tru base in initial model
-# niter =  6               # Number of iterations in non-lin GN inversion
-# z_shift_ini = -0.2*gscl  # Shift of base source layer for initial inversion model 
+# niter =  0                # Linear inversion if niter==0
+# z_shift_ini = 0.0         # Shift of tru base in initial model
+niter =  6               # Number of iterations in non-lin GN inversion
+z_shift_ini = -0.2*gscl  # Shift of base source layer for initial inversion model 
 
 lam = 1e-6                # Marquardt-Levenberg regularization parameter
 # lam = 0.0
 
 to_nT, from_nT = 1.0e9, 1.0e-9
 
-k_frst, k_last = 5,5
+k_frst, k_last = 2,2
 for ktest in range(k_frst,k_last+1):
     
     #-----------------------------------------
@@ -136,7 +136,7 @@ for ktest in range(k_frst,k_last+1):
         synt.rms_err[it] = np.sqrt(np.sum(deld**2)/np.sum(dd**2))
         
         # Compute Jacobian matrix
-        KK = ds*jacobi(vr, magn_it[it], vm_2, vt_e, vt_m, eps)
+        KK = ds*jacobi(vr, np.squeeze(magn_it[it]), vm_2, vt_e, vt_m, eps)
         JJ = np.hstack((LL, KK)) # The full Jacobian
         
         # Compute model update (mag and z2)

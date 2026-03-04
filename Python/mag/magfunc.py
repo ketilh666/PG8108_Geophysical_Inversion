@@ -138,6 +138,7 @@ def jacobi(vr, smag, vm, vt_e, vt_m, eps):
             w2 = 3*(dot(vt_m,vq))*(dot(vt_e,vq))/q5
         
             rf  = mu0/(4*np.pi)
+            # print(rf, w1, w2, smag[ii])
             jac[jj,ii] = rf*(w1 + w2)*smag[ii]
     
     return jac
