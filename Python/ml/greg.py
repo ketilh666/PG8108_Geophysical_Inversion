@@ -279,7 +279,7 @@ def mase_score(y_true, y_pred):
     nn = y_true.shape[0]
     rnum = y_true - y_pred
     rden = y_true - np.mean(y_true)
-    mase = np.sum(np.abs(rnum)/np.abs(rden))/np.float(nn)
+    mase = np.sum(np.abs(rnum)/np.abs(rden))/float(nn)
 
     return mase
 
